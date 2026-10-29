@@ -29,6 +29,7 @@ import os
 from typing import Any, Literal
 
 from mcp.server.fastmcp import FastMCP
+from mcp.types import ToolAnnotations
 
 from .client import (
     DEFAULT_BASE_URL,
@@ -78,7 +79,21 @@ def run_verdict(
         }
 
 
-@mcp.tool()
+# Annotations (all four hints, set to match the handler's real
+# behaviour): the verdict is a pure read — computed from live market
+# data, nothing is written or mutated server-side — so readOnly and,
+# judged by server-side effect, idempotent hold; a repeat call simply
+# re-derives the verdict (it does settle its own $0.02 x402 charge per
+# call, a payment, not a state change). openWorld: the tool reaches
+# the external Token Verdict API over the public internet.
+@mcp.tool(
+    annotations=ToolAnnotations(
+        readOnlyHint=True,
+        destructiveHint=False,
+        idempotentHint=True,
+        openWorldHint=True,
+    )
+)
 def token_verdict(
     address: str, chain: Literal["base", "ethereum", "solana"] = "base"
 ) -> dict[str, Any]:
