@@ -2,6 +2,7 @@
 # token-verdict-mcp
 
 [![M8ven Score](https://m8ven.ai/badge/mcp/quincygb/token-verdict-mcp)](https://m8ven.ai/mcp/quincygb/token-verdict-mcp?s=readme)
+[![M8ven Score](https://m8ven.ai/badge/mcp/quincygb-token-verdict-mcp-nglh21?v=c6307ba86e2a37fcc8bfe1b7374c94a4)](https://m8ven.ai/mcp/quincygb-token-verdict-mcp-nglh21?s=readme)
 
 > **Standalone home:** This server was split out of `QuincyGB/token-verdict-tools` so each MCP server has its own GitHub repository for directory ingestion and maintenance. The PyPI package name (`token-verdict-mcp`), version, and install command are unchanged.
 
